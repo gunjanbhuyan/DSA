@@ -10,15 +10,15 @@ public class MaxSubarraySum {
 		
 		for(int i = 0; i < arr.length; i++) {
 			sum += arr[i];
-			System.out.println("sum : " + sum);
+//			System.out.println("sum : " + sum);
 			
 			minSum = sum < minSum ? sum : minSum;
-			System.out.println("minSum : " + minSum);
+//			System.out.println("minSum : " + minSum);
 			
 			maxSum = sum - minSum > maxSum ? sum - minSum : maxSum;
-			System.out.println("maxSum : " + maxSum);
+//			System.out.println("maxSum : " + maxSum);
 			
-			System.out.println("-----");
+//			System.out.println("-----");
 		}
 		
 		return maxSum;
