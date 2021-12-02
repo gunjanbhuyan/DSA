@@ -12,9 +12,7 @@ public class LevenstainDistance {
 			Arrays.fill(row, -1);
 		}
 
-		getLevenstainDistanceHelper(str1, str1.length() - 1, str2, str2.length() - 1, levenstainTable);
-
-		return levenstainTable[str1.length() - 1][str2.length() - 1];
+		return getLevenstainDistanceHelper(str1, str1.length() - 1, str2, str2.length() - 1, levenstainTable);
 	}
 
 	private static int getLevenstainDistanceHelper(String str1, int str1Len, String str2, int str2Len,
