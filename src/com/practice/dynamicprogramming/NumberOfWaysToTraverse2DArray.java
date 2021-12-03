@@ -7,13 +7,9 @@ public class NumberOfWaysToTraverse2DArray {
 	}
 
 	private static int getNumberOfWaysToTraverse2DArrayHelper(int i, int j, int[][] cache) {
-
-		if((i == 0 && j > 0) || (j == 0 && i > 0)) {
-			return 1;
-		}
 		
-		if(i == 0 && j == 0) {
-			return 0;
+		if(i == 0 || j == 0) {
+			return 1;
 		}
 		
 		if(cache[i][j] == 0) {
