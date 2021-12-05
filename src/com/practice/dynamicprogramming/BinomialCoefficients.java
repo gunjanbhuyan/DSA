@@ -12,7 +12,12 @@ public class BinomialCoefficients {
 		for(int i = 1; i <= n; i++) {
 			for(int j = Math.min(i, k); j > 0; j--) {
 				cache[j] = cache[j] + cache[j - 1];
+//				System.out.print(cache[j] +"\t");
 			}
+			for(int a : cache) {
+				System.out.print(a + "\t");
+			}
+			System.out.println();
 		}
 
 		return cache[k];
