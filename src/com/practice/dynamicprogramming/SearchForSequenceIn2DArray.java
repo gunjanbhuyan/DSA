@@ -42,13 +42,21 @@ public class SearchForSequenceIn2DArray {
 
 		Set<Pattern> prevPattern = new HashSet<>();
 
-		return isPatternContainedInGridHelper(grid, 0, 0, pattern, 0, prevPattern);
+		for (int i = 0; i < grid.size(); i++) {
+			for (int j = 0; j < grid.get(i).size(); j++) {
+				if (isPatternContainedInGridHelper(grid, i, j, pattern, 0, prevPattern)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	private static boolean isPatternContainedInGridHelper(List<List<Integer>> grid, int i, int j, List<Integer> pattern,
 			int offset, Set<Pattern> prevPattern) {
-		
-		if(pattern.size() == offset) {
+
+		if (pattern.size() == offset) {
 			return true;
 		}
 
@@ -63,21 +71,21 @@ public class SearchForSequenceIn2DArray {
 					|| isPatternContainedInGridHelper(grid, i, j - 1, pattern, offset + 1, prevPattern)
 					|| isPatternContainedInGridHelper(grid, i, j + 1, pattern, offset + 1, prevPattern);
 		}
-		
+
 		prevPattern.add(new Pattern(i, j, offset));
 
 		return false;
 	}
 
 	public static void main(String[] args) {
-		
+
 		List<List<Integer>> grid = new ArrayList<>();
-		grid.add(Arrays.asList(new Integer[] {1, 2, 3}));
-		grid.add(Arrays.asList(new Integer[] {3, 4, 5}));
-		grid.add(Arrays.asList(new Integer[] {5, 6, 7}));
-		
-		List<Integer> pattern = Arrays.asList(new Integer[] {1, 2, 3, 4});
-		
+		grid.add(Arrays.asList(new Integer[] { 1, 2, 3 }));
+		grid.add(Arrays.asList(new Integer[] { 3, 4, 5 }));
+		grid.add(Arrays.asList(new Integer[] { 5, 6, 7 }));
+
+		List<Integer> pattern = Arrays.asList(new Integer[] { 2, 4, 6, 7 });
+
 		boolean res = isPatternContainedInGrid(grid, pattern);
 		System.out.println(res);
 	}
