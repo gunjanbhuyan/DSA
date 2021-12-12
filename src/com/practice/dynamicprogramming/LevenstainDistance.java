@@ -31,9 +31,12 @@ public class LevenstainDistance {
 				// delete one char from both strings from ending then compare
 				return getLevenstainDistanceHelper(str1, str1Len - 1, str2, str2Len - 1, levenstainTable);
 			} else {
-				// after substituting both strings are same, so delete one char from both strings from ending then compare
+				// after substituting both strings are same, so delete one char from both
+				// strings from ending then compare
 				int substitute = getLevenstainDistanceHelper(str1, str1Len - 1, str2, str2Len - 1, levenstainTable);
-				// delete one char from both strings from ending, insert one char at end of str1 to match with str2 then compare
+				// insert one char at end of str1 to match with str2, now last cars of both
+				// strings are same. Pointer of str1 is at one after ending char so to compare
+				// with same position of send string we do minus one then compare
 				int insert = getLevenstainDistanceHelper(str1, str1Len, str2, str2Len - 1, levenstainTable);
 				// delete one char from str1 to match with str2 then compare
 				int delete = getLevenstainDistanceHelper(str1, str1Len - 1, str2, str2Len, levenstainTable);
