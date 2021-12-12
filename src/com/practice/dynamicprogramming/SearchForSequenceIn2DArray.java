@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class SearchForSequenceIn2DArray {
 
-	static class Pattern {
+	static class PatternItem {
 
 		int x, y, offset;
 
-		public Pattern(int x, int y, int offset) {
+		public PatternItem(int x, int y, int offset) {
 			super();
 			this.x = x;
 			this.y = y;
@@ -33,14 +33,14 @@ public class SearchForSequenceIn2DArray {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			Pattern other = (Pattern) obj;
+			PatternItem other = (PatternItem) obj;
 			return offset == other.offset && x == other.x && y == other.y;
 		}
 	}
 
 	public static boolean isPatternContainedInGrid(List<List<Integer>> grid, List<Integer> pattern) {
 
-		Set<Pattern> prevPattern = new HashSet<>();
+		Set<PatternItem> prevPattern = new HashSet<>();
 
 		for (int i = 0; i < grid.size(); i++) {
 			for (int j = 0; j < grid.get(i).size(); j++) {
@@ -54,14 +54,14 @@ public class SearchForSequenceIn2DArray {
 	}
 
 	private static boolean isPatternContainedInGridHelper(List<List<Integer>> grid, int i, int j, List<Integer> pattern,
-			int offset, Set<Pattern> prevPattern) {
+			int offset, Set<PatternItem> prevPattern) {
 
 		if (pattern.size() == offset) {
 			return true;
 		}
 
 		if (i < 0 || i >= grid.size() || j < 0 || j >= grid.get(i).size()
-				|| prevPattern.contains(new Pattern(i, j, offset))) {
+				|| prevPattern.contains(new PatternItem(i, j, offset))) {
 			return false;
 		}
 
@@ -72,7 +72,7 @@ public class SearchForSequenceIn2DArray {
 					|| isPatternContainedInGridHelper(grid, i, j + 1, pattern, offset + 1, prevPattern);
 		}
 
-		prevPattern.add(new Pattern(i, j, offset));
+		prevPattern.add(new PatternItem(i, j, offset));
 
 		return false;
 	}
